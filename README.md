@@ -7,8 +7,6 @@ Unofficial API PHP Client implementation for the Junar.com API, a service to col
     $datastream->invoke(array(), 'json_array');
     print_r($datastream->result);
 
-Reading data streams:
-
 ## License ##
 (Released under MIT License since v0.0.1)
 

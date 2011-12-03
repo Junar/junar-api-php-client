@@ -2,7 +2,7 @@
 
 class DataStream {
 
-    private $appkey   = 'YOUR_AUTH_KEY';
+    private $authkey   = '';
     private $guid     = '';
     private $baseURI  = 'http://apisandbox.junar.com';
     private $response = null;
@@ -10,7 +10,7 @@ class DataStream {
     /**
      * for default junar json leave output blank, its structure is explained here http://wiki.junar.com/index.php/API#JSON_Structure
      * other options are: 
-     * - prettyjson, require our help to configure it
+     * - prettyjson
      * - json_array, basic javascript array of arrays
      * - csv
      * - tsv
@@ -33,6 +33,7 @@ class DataStream {
     {
         // create the URL
         $i = 0;
+        $query = array();
         foreach ($params as $param) {
             $query["pArgument$i"] = $param;
             $i++;
@@ -43,7 +44,7 @@ class DataStream {
             $query['output'] = $output;
         }
 
-        $query['auth_key'] = $this->appkey;
+        $query['auth_key'] = $this->authkey;
         $url = "/datastreams/invoke/{$this->guid}?" . http_build_query($query);
         return $this->callURI($url);
     }
@@ -51,7 +52,7 @@ class DataStream {
     public function info()
     {
         // create the URL
-        $url = "/datastreams/{$this->guid}?auth_key={$this->appkey}";
+        $url = "/datastreams/{$this->guid}?auth_key={$this->authkey}";
         return $this->callURI($url);
     }
 

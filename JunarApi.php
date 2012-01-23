@@ -1,26 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 class Junar {
     /**
      * Base class, contains the configuration
-=======
-class DataStream {
-
-    private $authkey   = '';
-    private $guid     = '';
-    private $baseURI  = 'http://apisandbox.junar.com';
-    private $response = null;
-
-    /**
-     * for default junar json leave output blank, its structure is explained here http://wiki.junar.com/index.php/API#JSON_Structure
-     * other options are: 
-     * - prettyjson
-     * - json_array, basic javascript array of arrays
-     * - csv
-     * - tsv
-     * - excel
->>>>>>> 7d292a5da5db6c6a0482c6e74c64c550a2d30263
      */
 
     private $authkey  = '';
@@ -62,7 +44,7 @@ class DataStream {
         * @param string base_uri the base uri of the API
         */
 
-        $this->guid = $guid;
+        $this->$guid = $guid;
         $this->authkey = $authkey;
         $this->baseUri = $baseUri;
     }
@@ -94,7 +76,6 @@ class DataStream {
 
         // create the URL
         $i = 0;
-        $query = array();
         foreach ($params as $param) {
             $query["pArgument$i"] = $param;
             $i++;
@@ -105,10 +86,6 @@ class DataStream {
             $query['output'] = $output;
         }
 
-<<<<<<< HEAD
-=======
-        $query['auth_key'] = $this->authkey;
->>>>>>> 7d292a5da5db6c6a0482c6e74c64c550a2d30263
         $url = "/datastreams/invoke/{$this->guid}?" . http_build_query($query);
         return $this->__callURI($url);
     }
@@ -121,18 +98,14 @@ class DataStream {
 
         // create the URL
         $url = "/datastreams/{$this->guid}?auth_key={$this->authkey}";
-<<<<<<< HEAD
         return $this->__callURI($url);
-=======
-        return $this->callURI($url);
->>>>>>> 7d292a5da5db6c6a0482c6e74c64c550a2d30263
     }
 
     public function __callURI($url) {
         // get the url
         // you could also use cURL here, it has better performance but i dont
         // know if you have cURL installed
-        $response = file_get_contents($this->baseUri . $url);
+        $response = file_get_contents($this->baseURI . $url);
 
         // parsing the content
         if (in_array($this->output, array('', 'prettyjson', 'json_array'))) {
@@ -144,10 +117,4 @@ class DataStream {
         return $this->response;
     }
 }
-<<<<<<< HEAD
-=======
-
-$ds = new DataStream('TEPCO-STOCK-QUOTE');
-print_r($ds->invoke(array(), 'json_array'));
->>>>>>> 7d292a5da5db6c6a0482c6e74c64c550a2d30263
 ?>

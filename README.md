@@ -3,9 +3,14 @@ Unofficial API PHP Client implementation for the Junar.com API, a service to col
 
 ## Usage ##
 
-    $datastream = new DataStream('TEPCO-STOCK-QUOTE');
-    $datastream->invoke(array(), 'json_array');
-    print_r($datastream->result);
+    <?php
+
+        require_once('JunarApi.php')
+        $junarAPIClient = new Junar('YOUR_AUTH_KEY'); // get one at www.junar.com/developers
+        $datastream = $junarAPIClient->datastream('GUID'); // the guid (identificator of a datastream)
+        $response = $datastream->invoke($params = array(), $output = 'json_array');
+        $result = $response['result'];
+    ?>
 
 ## License ##
 (Released under MIT License since v0.0.1)

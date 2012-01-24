@@ -44,7 +44,7 @@ class DataStream {
         * @param string base_uri the base uri of the API
         */
 
-        $this->$guid = $guid;
+        $this->guid = $guid;
         $this->authkey = $authkey;
         $this->baseUri = $baseUri;
     }

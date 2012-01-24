@@ -106,7 +106,7 @@ class DataStream {
         // get the url
         // you could also use cURL here, it has better performance but i dont
         // know if you have cURL installed
-        $response = file_get_contents($this->baseURI . $url);
+        $response = file_get_contents($this->baseUri . $url);
 
         // parsing the content
         if (in_array($this->output, array('', 'prettyjson', 'json_array'))) {

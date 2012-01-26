@@ -49,7 +49,7 @@ class DataStream {
         $this->baseUri = $baseUri;
     }
 
-    public function invoke($params = array(), $output = '')
+    public function invoke($params = array(), $output = '', $page = null, $limit = null)
     {
         /**
          * Gets the datastream's data.
@@ -66,6 +66,8 @@ class DataStream {
          *         - tsv
          *         - excel
          *         - xml, prettyjson sister, configuration here is not mandatory
+         * @param int page the page number of the data, use in combination with limit
+         * @param int limit the limit of the data to return, use in combination with page
          */
 
         if ($this->authkey == '')
@@ -85,6 +87,11 @@ class DataStream {
         if ($output != '') {
             $this->output = $output;
             $query['output'] = $output;
+        }
+
+        if (!is_null($page) && !is_null($limit) ) {
+            $query['page'] = $page;
+            $query['limit'] = $limit;
         }
 
         $url = "/datastreams/invoke/{$this->guid}?" . http_build_query($query);

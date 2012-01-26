@@ -4,7 +4,6 @@ Unofficial API PHP Client implementation for the Junar.com API, a service to col
 ## Usage ##
 
     <?php
-
         require_once('JunarApi.php')
         $junarAPIClient = new Junar('YOUR_AUTH_KEY'); // get one at www.junar.com/developers
         $datastream = $junarAPIClient->datastream('GUID'); // the guid (identificator of a datastream)

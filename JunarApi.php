@@ -65,7 +65,7 @@ class DataStream {
          *         - csv
          *         - tsv
          *         - excel
-         *         - xml, prettyjson sister, configuration is not mandatory
+         *         - xml, prettyjson sister, configuration here is not mandatory
          */
 
         if ($this->authkey == '')
